@@ -5,8 +5,6 @@ backend:
 media_folder: "uploads"
 public_folder: "/uploads"
 
-local_backend: true
-
 collections:
 
   # ── Cases ──────────────────────────────────────────────────────────────────
