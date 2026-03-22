@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FVN Studio — Creatief ontwerpbureau voor branding, packaging, web en art direction." />
+  <title>FVN Studio — Creatief Ontwerpbureau</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-home">
+
+  <!-- Navigation -->
+  <nav class="nav nav--transparent" id="main-nav" aria-label="Hoofdnavigatie">
+    <a href="index.html" class="nav__logo" aria-label="FVN Studio — naar startpagina"><img src="img/logo.png" alt="FVN Studio" class="nav__logo-img" data-cms-media="globaal.logo_beeld" /></a>
+
+    <ul class="nav__links" id="nav-links" role="list">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="cases.html">Cases</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav__cta">Contact</a></li>
+    </ul>
+
+    <button
+      class="nav__toggle"
+      id="nav-toggle"
+      aria-label="Menu openen"
+      aria-expanded="false"
+      aria-controls="nav-links"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <main>
+
+    <!-- Section 1: Video Hero -->
+    <section class="hero-video" aria-label="Hero sectie" data-cms-media="home.hero">
+      <!-- Video — add src="video/hero.mp4" when available -->
+      <video
+        class="hero-video__video"
+        id="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        aria-hidden="true"
+      >
+        <source src="video/hero.mp4" type="video/mp4" />
+        <!-- Geen video beschikbaar — zwarte achtergrond als fallback -->
+      </video>
+
+      <!-- Center headline -->
+      <div class="hero-video__content">
+        <h1 class="hero-video__title" data-cms="home.hero_titel">We maken dingen die tellen.</h1>
+      </div>
+
+      <!-- Bottom-right: mute button -->
+      <button
+        class="hero-video__mute"
+        id="video-mute-btn"
+        aria-label="Geluid aan"
+        title="Geluid aan/uit"
+      >
+        <!-- Muted icon (default state: video is muted) -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <line x1="23" y1="9" x2="17" y2="15"/>
+          <line x1="17" y1="9" x2="23" y2="15"/>
+        </svg>
+      </button>
+    </section>
+
+    <!-- Section 2: Intro -->
+    <section class="home-intro" aria-labelledby="intro-heading">
+      <div class="container">
+        <div class="home-intro__grid">
+
+          <div class="home-intro__text">
+            <h2 class="home-intro__heading reveal" id="intro-heading" data-cms="home.intro_titel">
+              Een studio die<br />vorm geeft aan<br />wat telt.
+            </h2>
+            <p class="reveal" style="transition-delay: 80ms;" data-cms="home.intro_tekst_1">
+              FVN Studio is een onafhankelijk creatief bureau gebaseerd in Gent.
+              We werken voor merken die iets te zeggen hebben — en die begrijpen
+              dat hoe je iets zegt net zo belangrijk is als wat je zegt.
+            </p>
+            <p class="reveal" style="transition-delay: 140ms;" data-cms="home.intro_tekst_2">
+              Van merkidentiteit tot packaging, van digitale platformen tot
+              gedrukte publicaties: we ontwerpen met precisie en bedoeling.
+              Geen overbodige decoratie, geen onnodig lawaai. Enkel wat werkt.
+            </p>
+            <a href="about.html" class="text-link reveal" style="transition-delay: 200ms;" data-cms="home.intro_link_tekst">
+              Over het bureau &rarr;
+            </a>
+          </div>
+
+          <div class="home-intro__disciplines reveal" style="transition-delay: 100ms;">
+            <p class="home-intro__disciplines-title">Disciplines</p>
+            <ul>
+              <li>Branding &amp; Identiteit</li>
+              <li>Packaging Design</li>
+              <li>Web &amp; Digital</li>
+              <li>Art Direction</li>
+              <li>Motion &amp; Video</li>
+              <li>Print &amp; Redactioneel</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Recent Cases — sticky stacking scroll effect -->
+    <section class="home-cases" aria-labelledby="cases-heading">
+      <div class="container">
+        <div class="home-cases__header">
+          <span class="home-cases__title section-label" id="cases-heading">Recente cases</span>
+          <a href="cases.html" class="home-cases__all">Alle cases &rarr;</a>
+        </div>
+      </div>
+
+      <!-- No wrapper divs: .stack-card elements are direct children so they
+           all sticky-stack at the same top offset, each sliding over the previous -->
+      <div class="cases-stack" id="cases-stack">
+
+        <a href="case-detail.html" class="stack-card">
+          <div class="stack-card__image">
+            <div class="home-case__img-inner home-case__img-inner--1" role="img" aria-label="Case: Maison Colette"></div>
+            <div class="stack-card__overlay">
+              <span class="stack-card__type">Branding &amp; Packaging</span>
+              <p class="stack-card__client">Maison Colette</p>
+              <p class="stack-card__desc">Merkidentiteit en verpakkingslijn voor een Belgisch parfumhuis</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="case-detail.html" class="stack-card">
+          <div class="stack-card__image">
+            <div class="home-case__img-inner home-case__img-inner--2" role="img" aria-label="Case: Graanmarkt 13"></div>
+            <div class="stack-card__overlay">
+              <span class="stack-card__type">Web &amp; Art Direction</span>
+              <p class="stack-card__client">Graanmarkt 13</p>
+              <p class="stack-card__desc">Digitale heropbouw van een iconiek Antwerps concept-adres</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="case-detail.html" class="stack-card">
+          <div class="stack-card__image">
+            <div class="home-case__img-inner home-case__img-inner--3" role="img" aria-label="Case: Rotor"></div>
+            <div class="stack-card__overlay">
+              <span class="stack-card__type">Print &amp; Redactioneel</span>
+              <p class="stack-card__client">Rotor</p>
+              <p class="stack-card__desc">Jaarverslag en publicatielijn voor een circulair bouwmaterialen centrum</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="case-detail.html" class="stack-card">
+          <div class="stack-card__image">
+            <div class="home-case__img-inner home-case__img-inner--4" role="img" aria-label="Case: Bold Brewery"></div>
+            <div class="stack-card__overlay">
+              <span class="stack-card__type">Branding &amp; Packaging</span>
+              <p class="stack-card__client">Bold Brewery</p>
+              <p class="stack-card__desc">Complete merkopbouw voor een ambachtelijke Gentse brouwerij</p>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Shared Footer -->
+  <footer class="footer" aria-label="Sitefooter">
+    <div class="container">
+      <div class="footer__main">
+
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo" aria-label="FVN Studio — naar startpagina"><img src="img/logo.png" alt="FVN Studio" class="footer__logo-img" /></a>
+          <p class="footer__tagline" data-cms="globaal.footer_tagline">Vorm geven aan wat telt.<br />Gent, België — sinds 2019.</p>
+        </div>
+
+        <nav aria-label="Footer navigatie">
+          <p class="footer__col-title">Navigatie</p>
+          <ul class="footer__nav" role="list">
+            <li><a href="cases.html">Cases</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__socials">
+          <p class="footer__col-title">Socials</p>
+          <ul class="footer__nav" role="list">
+            <li><a href="https://www.instagram.com/fvnstudio" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/company/fvnstudio" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.behance.net/fvnstudio" target="_blank" rel="noopener">Behance</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__contact">
+          <p class="footer__col-title">Contact</p>
+          <div class="footer__contact-info">
+            <a href="mailto:hallo@fvnstudio.be" data-cms="globaal.footer_email">hallo@fvnstudio.be</a>
+            <span data-cms="globaal.footer_locatie">Gent, België</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <span class="footer__copy" data-cms="globaal.copyright">&copy; 2026 FVN Studio. Alle rechten voorbehouden.</span>
+        <a href="algemene-voorwaarden.html" class="footer__copy footer__copy--link">Algemene Voorwaarden</a>
+        <span class="footer__copy" data-cms="globaal.footer_credit">Ontwerp &amp; code: FVN Studio</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="cms-loader.js"></script>
+</body>
+</html>

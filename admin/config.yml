@@ -1,0 +1,187 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+local_backend: true
+
+collections:
+
+  # ── Cases ──────────────────────────────────────────────────────────────────
+  - name: "cases"
+    label: "Cases"
+    label_singular: "Case"
+    folder: "_cases"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Klantnaam",       name: "client",       widget: "string" }
+      - { label: "Korte beschrijving", name: "beschrijving", widget: "text" }
+      - label: "Type / Tags"
+        name: "type"
+        widget: "select"
+        multiple: true
+        options: ["Branding", "Packaging", "Web", "Art Direction", "Print", "Redactioneel", "Motion"]
+      - label: "Cover mediazone"
+        name: "cover_modus"
+        widget: "select"
+        options: ["afbeelding", "video"]
+        default: "afbeelding"
+      - label: "Cover bestand"
+        name: "cover"
+        widget: "file"
+        media_library:
+          config:
+            multiple: false
+      - label: "Hero mediazone (detailpagina)"
+        name: "hero_modus"
+        widget: "select"
+        options: ["afbeelding", "video"]
+        default: "afbeelding"
+      - label: "Hero bestand"
+        name: "hero"
+        widget: "file"
+      - label: "Galerij"
+        name: "galerie"
+        widget: "list"
+        fields:
+          - label: "Modus"
+            name: "modus"
+            widget: "select"
+            options: ["afbeelding", "video"]
+            default: "afbeelding"
+          - { label: "Bestand", name: "bestand", widget: "file" }
+      - { label: "Volledige inhoud", name: "body",        widget: "markdown" }
+      - { label: "Gepubliceerd",     name: "gepubliceerd", widget: "boolean", default: true }
+      - { label: "Volgorde",         name: "volgorde",    widget: "number",  default: 99 }
+
+  # ── Homepage ────────────────────────────────────────────────────────────────
+  - name: "home"
+    label: "Homepage"
+    files:
+      - label: "Homepage inhoud"
+        name: "home"
+        file: "data/home.json"
+        fields:
+          - { label: "Hero titel",         name: "hero_titel",       widget: "string" }
+          - label: "Hero modus"
+            name: "hero_modus"
+            widget: "select"
+            options: ["afbeelding", "video"]
+            default: "video"
+          - { label: "Hero bestand",       name: "hero_bestand",     widget: "file" }
+          - { label: "Intro titel",        name: "intro_titel",      widget: "string" }
+          - { label: "Intro tekst 1",      name: "intro_tekst_1",    widget: "text" }
+          - { label: "Intro tekst 2",      name: "intro_tekst_2",    widget: "text" }
+          - { label: "Intro linktekst",    name: "intro_link_tekst", widget: "string" }
+
+  # ── About ───────────────────────────────────────────────────────────────────
+  - name: "about"
+    label: "About"
+    files:
+      - label: "About inhoud"
+        name: "about"
+        file: "data/about.json"
+        fields:
+          - { label: "Opener zin",      name: "opener",        widget: "string" }
+          - { label: "Naam",            name: "naam",          widget: "string" }
+          - { label: "Bio alinea 1",    name: "bio_1",         widget: "text" }
+          - { label: "Bio alinea 2",    name: "bio_2",         widget: "text" }
+          - { label: "Bio alinea 3",    name: "bio_3",         widget: "text" }
+          - { label: "Bio alinea 4",    name: "bio_4",         widget: "text" }
+          - { label: "Bio alinea 5",    name: "bio_5",         widget: "text" }
+          - { label: "Manifest quote",  name: "manifest_quote", widget: "text" }
+          - { label: "CTA knoptekst",   name: "cta_knop",      widget: "string" }
+          - label: "Portret modus"
+            name: "portret_modus"
+            widget: "select"
+            options: ["afbeelding", "video"]
+            default: "afbeelding"
+          - { label: "Portret bestand", name: "portret_bestand", widget: "file" }
+
+  # ── Services ────────────────────────────────────────────────────────────────
+  - name: "services"
+    label: "Services"
+    files:
+      - label: "Services inhoud"
+        name: "services"
+        file: "data/services.json"
+        fields:
+          - { label: "Paginatitel",  name: "titel",      widget: "string" }
+          - { label: "CTA titel",    name: "cta_titel",  widget: "string" }
+          - { label: "CTA subtekst", name: "cta_sub",    widget: "text" }
+          - { label: "CTA knop",     name: "cta_knop",   widget: "string" }
+          - label: "Dienst 1 — afbeelding modus"
+            name: "dienst_1_beeld_modus"
+            widget: "select"
+            options: ["afbeelding", "video"]
+            default: "afbeelding"
+          - { label: "Dienst 1 — bestand", name: "dienst_1_beeld_bestand", widget: "file" }
+          - label: "Dienst 2 — afbeelding modus"
+            name: "dienst_2_beeld_modus"
+            widget: "select"
+            options: ["afbeelding", "video"]
+            default: "afbeelding"
+          - { label: "Dienst 2 — bestand", name: "dienst_2_beeld_bestand", widget: "file" }
+          - label: "Dienst 3 — afbeelding modus"
+            name: "dienst_3_beeld_modus"
+            widget: "select"
+            options: ["afbeelding", "video"]
+            default: "afbeelding"
+          - { label: "Dienst 3 — bestand", name: "dienst_3_beeld_bestand", widget: "file" }
+          - label: "Dienst 4 — afbeelding modus"
+            name: "dienst_4_beeld_modus"
+            widget: "select"
+            options: ["afbeelding", "video"]
+            default: "afbeelding"
+          - { label: "Dienst 4 — bestand", name: "dienst_4_beeld_bestand", widget: "file" }
+          - label: "Dienst 5 — afbeelding modus"
+            name: "dienst_5_beeld_modus"
+            widget: "select"
+            options: ["afbeelding", "video"]
+            default: "afbeelding"
+          - { label: "Dienst 5 — bestand", name: "dienst_5_beeld_bestand", widget: "file" }
+          - label: "Dienst 6 — afbeelding modus"
+            name: "dienst_6_beeld_modus"
+            widget: "select"
+            options: ["afbeelding", "video"]
+            default: "afbeelding"
+          - { label: "Dienst 6 — bestand", name: "dienst_6_beeld_bestand", widget: "file" }
+
+  # ── Contact ─────────────────────────────────────────────────────────────────
+  - name: "contact"
+    label: "Contact"
+    files:
+      - label: "Contact inhoud"
+        name: "contact"
+        file: "data/contact.json"
+        fields:
+          - { label: "Titel",          name: "titel",        widget: "string" }
+          - { label: "Subtekst",       name: "subtekst",     widget: "text" }
+          - { label: "Direct titel",   name: "direct_titel", widget: "string" }
+          - { label: "Direct tekst",   name: "direct_tekst", widget: "text" }
+          - { label: "E-mailadres",    name: "email",        widget: "string" }
+          - { label: "Knoptekst",      name: "submit_tekst", widget: "string" }
+
+  # ── Globaal ─────────────────────────────────────────────────────────────────
+  - name: "globaal"
+    label: "Globaal"
+    files:
+      - label: "Globale instellingen"
+        name: "globaal"
+        file: "data/globaal.json"
+        fields:
+          - { label: "Logo tekst",         name: "logo",              widget: "string" }
+          - label: "Logo modus"
+            name: "logo_beeld_modus"
+            widget: "select"
+            options: ["afbeelding", "video"]
+            default: "afbeelding"
+          - { label: "Logo bestand",       name: "logo_beeld_bestand", widget: "file" }
+          - { label: "Footer tagline",     name: "footer_tagline",    widget: "text" }
+          - { label: "Footer e-mail",      name: "footer_email",      widget: "string" }
+          - { label: "Footer locatie",     name: "footer_locatie",    widget: "string" }
+          - { label: "Copyright tekst",    name: "copyright",         widget: "string" }
+          - { label: "Footer credit",      name: "footer_credit",     widget: "string" }

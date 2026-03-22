@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FVN Studio — Alle projecten en cases. Branding, packaging, web en meer." />
+  <title>Cases — FVN Studio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-cases">
+
+  <!-- Navigation -->
+  <nav class="nav" id="main-nav" aria-label="Hoofdnavigatie">
+    <a href="index.html" class="nav__logo" aria-label="FVN Studio — naar startpagina"><img src="img/logo.png" alt="FVN Studio" class="nav__logo-img" data-cms-media="globaal.logo_beeld" /></a>
+
+    <ul class="nav__links" id="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="cases.html" class="active">Cases</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav__cta">Contact</a></li>
+    </ul>
+
+    <button
+      class="nav__toggle"
+      id="nav-toggle"
+      aria-label="Menu openen"
+      aria-expanded="false"
+      aria-controls="nav-links"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <main>
+
+    <!-- Animated Title Header -->
+    <header class="page-header" aria-labelledby="cases-page-title">
+      <div class="container">
+        <h1 class="cases-big-title" id="cases-page-title" aria-label="Cases">CASES</h1>
+        <p class="cases-subtitle">Alle projecten</p>
+      </div>
+    </header>
+
+    <!-- Cases Grid -->
+    <section class="cases-grid-section" aria-label="Projectenoverzicht">
+      <div class="container">
+
+        <!-- Filter bar -->
+        <div class="cases-filter" id="cases-filter" role="group" aria-label="Filter op type">
+          <button class="filter-btn active" data-filter="all">Alle</button>
+          <button class="filter-btn" data-filter="Branding">Branding</button>
+          <button class="filter-btn" data-filter="Packaging">Packaging</button>
+          <button class="filter-btn" data-filter="Web">Web</button>
+          <button class="filter-btn" data-filter="Art Direction">Art Direction</button>
+          <button class="filter-btn" data-filter="Print">Print</button>
+          <button class="filter-btn" data-filter="Redactioneel">Redactioneel</button>
+        </div>
+
+        <div class="cases-grid" id="cases-grid">
+
+          <!-- Case 1 -->
+          <article data-tags="Branding Packaging Art Direction">
+            <a href="case-detail.html" class="case-card reveal" aria-label="Case: Maison Colette — Branding en packaging">
+              <div class="case-card__image">
+                <div class="case-card__img-inner case-card__img-inner--1" role="img" aria-label="Maison Colette visueel" data-cms-media="case.cover" data-case-index="1"></div>
+                <div class="case-card__overlay" aria-hidden="true">
+                  <span class="case-card__arrow">&rarr;</span>
+                </div>
+              </div>
+              <h2 class="case-card__client">Maison Colette</h2>
+              <p class="case-card__desc">Volledige merkidentiteit en verpakkingslijn voor een Belgisch parfumhuis. Minimalistische typografie, gebotteld als parfum.</p>
+              <div class="case-card__tags" aria-label="Labels">
+                <span class="tag">Branding</span>
+                <span class="tag">Packaging</span>
+                <span class="tag">Art Direction</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Case 2 -->
+          <article data-tags="Web Art Direction">
+            <a href="case-detail.html" class="case-card reveal" style="transition-delay: 80ms;" aria-label="Case: Graanmarkt 13 — Web en art direction">
+              <div class="case-card__image">
+                <div class="case-card__img-inner case-card__img-inner--2" role="img" aria-label="Graanmarkt 13 visueel" data-cms-media="case.cover" data-case-index="2"></div>
+                <div class="case-card__overlay" aria-hidden="true">
+                  <span class="case-card__arrow">&rarr;</span>
+                </div>
+              </div>
+              <h2 class="case-card__client">Graanmarkt 13</h2>
+              <p class="case-card__desc">Digitale heropbouw van een iconiek Antwerps concept-adres. Van IA tot live platform, met redactionele art direction.</p>
+              <div class="case-card__tags" aria-label="Labels">
+                <span class="tag">Web</span>
+                <span class="tag">Art Direction</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Case 3 -->
+          <article data-tags="Print Redactioneel">
+            <a href="case-detail.html" class="case-card reveal" style="transition-delay: 40ms;" aria-label="Case: Rotor — Print en redactioneel">
+              <div class="case-card__image">
+                <div class="case-card__img-inner case-card__img-inner--3" role="img" aria-label="Rotor visueel" data-cms-media="case.cover" data-case-index="3"></div>
+                <div class="case-card__overlay" aria-hidden="true">
+                  <span class="case-card__arrow">&rarr;</span>
+                </div>
+              </div>
+              <h2 class="case-card__client">Rotor</h2>
+              <p class="case-card__desc">Jaarverslag en doorlopende publicatielijn voor een organisatie die circulair bouwen promoot. Taal als architectuur.</p>
+              <div class="case-card__tags" aria-label="Labels">
+                <span class="tag">Print</span>
+                <span class="tag">Redactioneel</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Case 4 -->
+          <article data-tags="Branding Packaging">
+            <a href="case-detail.html" class="case-card reveal" style="transition-delay: 120ms;" aria-label="Case: Bold Brewery — Branding en packaging">
+              <div class="case-card__image">
+                <div class="case-card__img-inner case-card__img-inner--4" role="img" aria-label="Bold Brewery visueel" data-cms-media="case.cover" data-case-index="4"></div>
+                <div class="case-card__overlay" aria-hidden="true">
+                  <span class="case-card__arrow">&rarr;</span>
+                </div>
+              </div>
+              <h2 class="case-card__client">Bold Brewery</h2>
+              <p class="case-card__desc">Complete merkopbouw voor een ambachtelijke Gentse brouwerij. Etiketten, visuele taal en rollout voor horeca.</p>
+              <div class="case-card__tags" aria-label="Labels">
+                <span class="tag">Branding</span>
+                <span class="tag">Packaging</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Case 5 -->
+          <article data-tags="Branding Web">
+            <a href="case-detail.html" class="case-card reveal" style="transition-delay: 80ms;" aria-label="Case: Studio Roos — Branding en web">
+              <div class="case-card__image">
+                <div class="case-card__img-inner case-card__img-inner--5" role="img" aria-label="Studio Roos visueel" data-cms-media="case.cover" data-case-index="5"></div>
+                <div class="case-card__overlay" aria-hidden="true">
+                  <span class="case-card__arrow">&rarr;</span>
+                </div>
+              </div>
+              <h2 class="case-card__client">Studio Roos</h2>
+              <p class="case-card__desc">Portfoliosite en huisstijl voor een interieurarchitect. Rustige typografie, veel wit, veel licht.</p>
+              <div class="case-card__tags" aria-label="Labels">
+                <span class="tag">Branding</span>
+                <span class="tag">Web</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Case 6 -->
+          <article data-tags="Branding Packaging Print">
+            <a href="case-detail.html" class="case-card reveal" style="transition-delay: 160ms;" aria-label="Case: Kompass Koffie — Branding en packaging">
+              <div class="case-card__image">
+                <div class="case-card__img-inner case-card__img-inner--6" role="img" aria-label="Kompass Koffie visueel" data-cms-media="case.cover" data-case-index="6"></div>
+                <div class="case-card__overlay" aria-hidden="true">
+                  <span class="case-card__arrow">&rarr;</span>
+                </div>
+              </div>
+              <h2 class="case-card__client">Kompass Koffie</h2>
+              <p class="case-card__desc">Rebranding en nieuwe verpakkingsfamilie voor een Brusselse specialty coffee roaster met internationale ambities.</p>
+              <div class="case-card__tags" aria-label="Labels">
+                <span class="tag">Branding</span>
+                <span class="tag">Packaging</span>
+                <span class="tag">Print</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Case 7 — verborgen tot "Meer tonen" -->
+          <article data-tags="Branding Packaging Art Direction" data-more="true" class="hidden">
+            <a href="case-detail.html" class="case-card reveal" aria-label="Case: Selene Wines — Branding en packaging">
+              <div class="case-card__image">
+                <div class="case-card__img-inner case-card__img-inner--1" role="img" aria-label="Selene Wines visueel"></div>
+                <div class="case-card__overlay" aria-hidden="true">
+                  <span class="case-card__arrow">&rarr;</span>
+                </div>
+              </div>
+              <h2 class="case-card__client">Selene Wines</h2>
+              <p class="case-card__desc">Identiteit en verpakkingslijn voor een nieuwe natuurwijngaard in de Ardennen. Handgeschreven typografie ontmoet hedendaags minimalisme.</p>
+              <div class="case-card__tags" aria-label="Labels">
+                <span class="tag">Branding</span>
+                <span class="tag">Packaging</span>
+                <span class="tag">Art Direction</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Case 8 — verborgen tot "Meer tonen" -->
+          <article data-tags="Web Redactioneel" data-more="true" class="hidden">
+            <a href="case-detail.html" class="case-card reveal" aria-label="Case: KASK — Web en redactioneel">
+              <div class="case-card__image">
+                <div class="case-card__img-inner case-card__img-inner--3" role="img" aria-label="KASK visueel"></div>
+                <div class="case-card__overlay" aria-hidden="true">
+                  <span class="case-card__arrow">&rarr;</span>
+                </div>
+              </div>
+              <h2 class="case-card__client">KASK</h2>
+              <p class="case-card__desc">Nieuwe digitale omgeving voor de Gentse kunsthogeschool: portfolioplatform, redactionele architectuur en een online studiegids.</p>
+              <div class="case-card__tags" aria-label="Labels">
+                <span class="tag">Web</span>
+                <span class="tag">Redactioneel</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Case 9 — verborgen tot "Meer tonen" -->
+          <article data-tags="Branding Web Art Direction" data-more="true" class="hidden">
+            <a href="case-detail.html" class="case-card reveal" aria-label="Case: Mira Architecten — Branding en web">
+              <div class="case-card__image">
+                <div class="case-card__img-inner case-card__img-inner--5" role="img" aria-label="Mira Architecten visueel"></div>
+                <div class="case-card__overlay" aria-hidden="true">
+                  <span class="case-card__arrow">&rarr;</span>
+                </div>
+              </div>
+              <h2 class="case-card__client">Mira Architecten</h2>
+              <p class="case-card__desc">Volledige merkopbouw en portfoliowebsite voor een jong Antwerps architectenbureau met een sterk eigen handschrift.</p>
+              <div class="case-card__tags" aria-label="Labels">
+                <span class="tag">Branding</span>
+                <span class="tag">Web</span>
+                <span class="tag">Art Direction</span>
+              </div>
+            </a>
+          </article>
+
+        </div>
+
+        <!-- Meer cases laden -->
+        <div class="cases-more" id="cases-more">
+          <button class="cases-more-btn" id="cases-more-btn" aria-label="Toon alle cases">
+            Meer cases tonen <span class="cases-more-count">(+3)</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="cases-cta" aria-label="Contact uitnodiging">
+      <div class="container">
+        <p class="cases-cta__label">Klaar om samen te werken?</p>
+        <h2 class="cases-cta__title">Laten we iets<br />maken dat telt.</h2>
+        <a href="contact.html" class="btn btn--white">Neem contact op &rarr;</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Shared Footer -->
+  <footer class="footer" aria-label="Sitefooter">
+    <div class="container">
+      <div class="footer__main">
+
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo" aria-label="FVN Studio — naar startpagina"><img src="img/logo.png" alt="FVN Studio" class="footer__logo-img" /></a>
+          <p class="footer__tagline" data-cms="globaal.footer_tagline">Vorm geven aan wat telt.<br />Gent, België — sinds 2019.</p>
+        </div>
+
+        <nav aria-label="Footer navigatie">
+          <p class="footer__col-title">Navigatie</p>
+          <ul class="footer__nav" role="list">
+            <li><a href="cases.html">Cases</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__socials">
+          <p class="footer__col-title">Socials</p>
+          <ul class="footer__nav" role="list">
+            <li><a href="https://www.instagram.com/fvnstudio" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/company/fvnstudio" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.behance.net/fvnstudio" target="_blank" rel="noopener">Behance</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__contact">
+          <p class="footer__col-title">Contact</p>
+          <div class="footer__contact-info">
+            <a href="mailto:hallo@fvnstudio.be" data-cms="globaal.footer_email">hallo@fvnstudio.be</a>
+            <span data-cms="globaal.footer_locatie">Gent, België</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <span class="footer__copy" data-cms="globaal.copyright">&copy; 2026 FVN Studio. Alle rechten voorbehouden.</span>
+        <a href="algemene-voorwaarden.html" class="footer__copy footer__copy--link">Algemene Voorwaarden</a>
+        <span class="footer__copy" data-cms="globaal.footer_credit">Ontwerp &amp; code: FVN Studio</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="cms-loader.js"></script>
+</body>
+</html>

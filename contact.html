@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FVN Studio — Neem contact op. Vertel ons over je project voor branding, packaging, web of art direction." />
+  <title>Contact — FVN Studio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-contact">
+
+  <!-- Navigation -->
+  <nav class="nav" id="main-nav" aria-label="Hoofdnavigatie">
+    <a href="index.html" class="nav__logo" aria-label="FVN Studio — naar startpagina"><img src="img/logo.png" alt="FVN Studio" class="nav__logo-img" data-cms-media="globaal.logo_beeld" /></a>
+
+    <ul class="nav__links" id="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="cases.html">Cases</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active nav__cta">Contact</a></li>
+    </ul>
+
+    <button
+      class="nav__toggle"
+      id="nav-toggle"
+      aria-label="Menu openen"
+      aria-expanded="false"
+      aria-controls="nav-links"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <main>
+
+    <!-- Contact Header -->
+    <header class="contact-header" aria-labelledby="contact-page-title">
+      <div class="container">
+        <h1 class="contact-header__title reveal" id="contact-page-title" data-cms="contact.titel">Laten we werken.</h1>
+        <p class="contact-header__sub reveal" style="transition-delay: 60ms;" data-cms="contact.subtekst">
+          We helpen merken en organisaties met branding, packaging, web &amp; digital,
+          art direction, motion en print. Vertel ons over je project — we antwoorden
+          binnen 48 uur.
+        </p>
+      </div>
+    </header>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section" aria-labelledby="contact-form-title">
+      <div class="container">
+        <div class="contact-form-section__grid">
+
+          <!-- Aside -->
+          <aside class="contact-form-section__aside reveal">
+            <h2 class="contact-form-section__aside-title" data-cms="contact.direct_titel">Direct contact</h2>
+            <p data-cms="contact.direct_tekst">
+              Liever meteen een e-mail sturen? Dat kan ook.
+              We zijn bereikbaar op werkdagen van 9 tot 17 uur.
+            </p>
+            <p>
+              Voor dringende vragen of een telefonisch gesprek:
+              neem eerst contact op via e-mail en we plannen een tijd in.
+            </p>
+            <a href="mailto:hallo@fvnstudio.be" class="contact-form-section__aside-email" data-cms="contact.email">
+              hallo@fvnstudio.be
+            </a>
+          </aside>
+
+          <!-- Form -->
+          <div class="contact-form-section__form reveal" style="transition-delay: 80ms;">
+            <h2 class="sr-only" id="contact-form-title">Contactformulier</h2>
+
+            <!--
+              FORMSPREE: Vervang "JOUW_FORM_ID" door je eigen Formspree form-ID.
+              Maak een gratis account aan op https://formspree.io en kopieer je form-ID.
+              Voorbeeld: action="https://formspree.io/f/xrgjaepq"
+            -->
+            <form
+              class="contact-form"
+              id="contact-form"
+              action="https://formspree.io/f/JOUW_FORM_ID"
+              method="POST"
+              enctype="multipart/form-data"
+              novalidate
+              aria-label="Aanvraagformulier"
+            >
+
+              <!-- Row 1: Naam + Bedrijf -->
+              <div class="contact-form__row">
+                <div class="form-group">
+                  <label class="form-label" for="f-naam">
+                    Naam <span class="required-mark" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="f-naam"
+                    name="naam"
+                    autocomplete="name"
+                    placeholder="Jan Peeters"
+                    required
+                    aria-required="true"
+                    aria-describedby="err-naam"
+                  />
+                  <span class="form-error" id="err-naam" role="alert" aria-live="polite"></span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="f-bedrijf">
+                    Bedrijf / Organisatie
+                  </label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="f-bedrijf"
+                    name="bedrijf"
+                    autocomplete="organization"
+                    placeholder="Studio Voorbeeld"
+                  />
+                </div>
+              </div>
+
+              <!-- Row 2: E-mail + Telefoon -->
+              <div class="contact-form__row">
+                <div class="form-group">
+                  <label class="form-label" for="f-email">
+                    E-mail <span class="required-mark" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    class="form-input"
+                    type="email"
+                    id="f-email"
+                    name="email"
+                    autocomplete="email"
+                    placeholder="jan@voorbeeld.be"
+                    required
+                    aria-required="true"
+                    aria-describedby="err-email"
+                  />
+                  <span class="form-error" id="err-email" role="alert" aria-live="polite"></span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="f-telefoon">
+                    Telefoon
+                  </label>
+                  <input
+                    class="form-input"
+                    type="tel"
+                    id="f-telefoon"
+                    name="telefoon"
+                    autocomplete="tel"
+                    placeholder="+32 478 00 00 00"
+                  />
+                </div>
+              </div>
+
+              <!-- Type project -->
+              <div class="form-group">
+                <label class="form-label" for="f-type">
+                  Type project
+                </label>
+                <div class="form-select-wrap">
+                  <select
+                    class="form-select form-input"
+                    id="f-type"
+                    name="type_project"
+                    aria-describedby="err-type"
+                  >
+                    <option value="" disabled selected>Selecteer een categorie</option>
+                    <option value="Branding">Branding &amp; Identiteit</option>
+                    <option value="Packaging">Packaging Design</option>
+                    <option value="Web &amp; Digital">Web &amp; Digital</option>
+                    <option value="Art Direction">Art Direction</option>
+                    <option value="Motion">Motion &amp; Video</option>
+                    <option value="Print">Print &amp; Redactioneel</option>
+                    <option value="Andere">Andere</option>
+                  </select>
+                </div>
+                <span class="form-error" id="err-type" role="alert" aria-live="polite"></span>
+              </div>
+
+              <!-- Omschrijving -->
+              <div class="form-group">
+                <label class="form-label" for="f-omschrijving">
+                  Omschrijving van het project <span class="required-mark" aria-hidden="true">*</span>
+                </label>
+                <textarea
+                  class="form-textarea"
+                  id="f-omschrijving"
+                  name="omschrijving"
+                  placeholder="Beschrijf je project, doelstellingen, timing en alles wat relevant is…"
+                  rows="6"
+                  required
+                  aria-required="true"
+                  aria-describedby="err-omschrijving"
+                ></textarea>
+                <span class="form-error" id="err-omschrijving" role="alert" aria-live="polite"></span>
+              </div>
+
+              <!-- Bijlagen -->
+              <div class="form-group">
+                <label class="form-file-label" for="f-bijlagen">
+                  Upload afbeeldingen of documenten
+                </label>
+                <input
+                  class="form-file-input"
+                  type="file"
+                  id="f-bijlagen"
+                  name="bijlagen"
+                  accept="image/*,.pdf,.doc,.docx,.ppt,.pptx"
+                  multiple
+                  aria-label="Upload bestanden (afbeeldingen, PDF, Word of PowerPoint)"
+                />
+              </div>
+
+              <!-- Submit -->
+              <div class="form-submit">
+                <button type="submit" class="btn btn--full" data-cms="contact.submit_tekst">
+                  Verstuur aanvraag
+                </button>
+              </div>
+
+              <!-- Success message -->
+              <div
+                class="form-success"
+                id="form-success"
+                role="status"
+                aria-live="polite"
+              ></div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Shared Footer -->
+  <footer class="footer" aria-label="Sitefooter">
+    <div class="container">
+      <div class="footer__main">
+
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo" aria-label="FVN Studio — naar startpagina"><img src="img/logo.png" alt="FVN Studio" class="footer__logo-img" /></a>
+          <p class="footer__tagline" data-cms="globaal.footer_tagline">Vorm geven aan wat telt.<br />Gent, België — sinds 2019.</p>
+        </div>
+
+        <nav aria-label="Footer navigatie">
+          <p class="footer__col-title">Navigatie</p>
+          <ul class="footer__nav" role="list">
+            <li><a href="cases.html">Cases</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__socials">
+          <p class="footer__col-title">Socials</p>
+          <ul class="footer__nav" role="list">
+            <li><a href="https://www.instagram.com/fvnstudio" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/company/fvnstudio" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.behance.net/fvnstudio" target="_blank" rel="noopener">Behance</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__contact">
+          <p class="footer__col-title">Contact</p>
+          <div class="footer__contact-info">
+            <a href="mailto:hallo@fvnstudio.be" data-cms="globaal.footer_email">hallo@fvnstudio.be</a>
+            <span data-cms="globaal.footer_locatie">Gent, België</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <span class="footer__copy" data-cms="globaal.copyright">&copy; 2026 FVN Studio. Alle rechten voorbehouden.</span>
+        <a href="algemene-voorwaarden.html" class="footer__copy footer__copy--link">Algemene Voorwaarden</a>
+        <span class="footer__copy" data-cms="globaal.footer_credit">Ontwerp &amp; code: FVN Studio</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="cms-loader.js"></script>
+</body>
+</html>

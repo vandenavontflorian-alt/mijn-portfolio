@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l /Users/florianvandenavont/Documents/mijn-portfolio/*.html /Users/florianvandenavont/Documents/mijn-portfolio/style.css /Users/florianvandenavont/Documents/mijn-portfolio/script.js)",
+      "Bash(grep -rn \"id=\"\"main-nav\"\"\\\\|id=\"\"nav-toggle\"\"\\\\|id=\"\"nav-links\"\"\\\\|id=\"\"contact-form\"\"\\\\|id=\"\"hero-video\"\"\\\\|id=\"\"video-mute-btn\"\"\" /Users/florianvandenavont/Documents/mijn-portfolio/*.html)"
+    ]
+  }
+}
