@@ -1,22 +1,18 @@
 {
-  "logo": "FVN",
+  "social_instagram": "https://www.instagram.com/fvnstudio",
+  "social_behance": "https://www.behance.net/fvnstudio",
   "logo_wit_bestand": "img/logo-wit.svg",
   "logo_zwart_bestand": "img/logo-zwart.svg",
-  "footer_tagline": "Vorm geven aan wat telt.\nGent, België — sinds 2019.",
-  "footer_email": "hallo@fvnstudio.be",
-  "footer_locatie": "Gent, België",
   "copyright": "© 2026 FVN Studio. Alle rechten voorbehouden.",
-  "footer_credit": "Ontwerp & code: FVN Studio",
-  "social_instagram": "https://www.instagram.com/fvnstudio",
-  "social_linkedin": "https://www.linkedin.com/company/fvnstudio",
-  "social_behance": "https://www.behance.net/fvnstudio",
+  "footer_tagline": "Vorm geven aan wat telt.\nGent, België — sinds 2019.",
+  "footer_locatie": "Gent, België",
+  "logo": "FVN",
   "case_labels": [
     "Branding",
     "Packaging",
-    "Web",
-    "Art Direction",
-    "Print",
-    "Redactioneel",
-    "Motion"
-  ]
+    "Web"
+  ],
+  "social_linkedin": "https://www.linkedin.com/company/fvnstudio",
+  "footer_email": "hallo@fvnstudio.be",
+  "footer_credit": "Ontwerp & code: FVN Studio"
 }
