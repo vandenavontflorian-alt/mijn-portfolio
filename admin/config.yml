@@ -10,85 +10,87 @@ collections:
   # ── Cases ──────────────────────────────────────────────────────────────────
   - name: "cases"
     label: "Cases"
-    label_singular: "Case"
-    folder: "_cases"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Klantnaam",          name: "client",       widget: "string" }
-      - { label: "Korte beschrijving", name: "beschrijving", widget: "text" }
-      - label: "Type / Tags"
-        name: "type"
-        widget: "list"
-        field: { label: "Label", name: "label", widget: "string" }
-        hint: "Gebruik exact dezelfde labels als gedefinieerd in Globaal → Case labels"
-      - label: "Cover modus"
-        name: "cover_modus"
-        widget: "select"
-        options: ["afbeelding", "video"]
-        default: "afbeelding"
-      - label: "Cover bestand"
-        name: "cover"
-        widget: "file"
-        hint: "Aanbevolen: 1200 × 800 px (3:2) — max. 1 MB"
-        media_library:
-          config:
-            multiple: false
-      - label: "Hero modus (detailpagina)"
-        name: "hero_modus"
-        widget: "select"
-        options: ["afbeelding", "video"]
-        default: "afbeelding"
-      - label: "Hero bestand"
-        name: "hero"
-        widget: "file"
-        hint: "Aanbevolen: 1600 × 900 px (16:9) — max. 1 MB"
-      - label: "Accordion (dropdown secties)"
-        name: "accordion"
-        widget: "list"
-        hint: "Voeg secties toe of verwijder ze. Volgorde bepaalt de weergave."
+    files:
+      - label: "Alle cases"
+        name: "cases"
+        file: "data/cases.json"
         fields:
-          - { label: "Titel",   name: "titel",  widget: "string" }
-          - { label: "Inhoud",  name: "inhoud", widget: "text" }
-      - label: "Team"
-        name: "team"
-        widget: "list"
-        hint: "Iedereen die aan dit project heeft gewerkt."
-        fields:
-          - { label: "Naam", name: "naam", widget: "string" }
-          - { label: "Rol",  name: "rol",  widget: "string" }
-      - label: "Galerij rijen"
-        name: "galerie"
-        widget: "list"
-        hint: "Elke rij is óf een volledige breedte-afbeelding óf twee naast elkaar."
-        fields:
-          - label: "Layout"
-            name: "layout"
-            widget: "select"
-            options:
-              - { label: "Volledig (één afbeelding breed)", value: "volledig" }
-              - { label: "Paar (twee naast elkaar)",        value: "paar" }
-            default: "volledig"
-          - label: "Afbeelding modus"
-            name: "modus"
-            widget: "select"
-            options: ["afbeelding", "video"]
-            default: "afbeelding"
-          - label: "Afbeelding bestand"
-            name: "bestand"
-            widget: "file"
-            hint: "Volledig: 1600 × 900 px (16:9) — Paar (links): 800 × 600 px (4:3) — max. 800 KB"
-          - label: "Tweede afbeelding modus (alleen bij Paar)"
-            name: "modus_2"
-            widget: "select"
-            options: ["afbeelding", "video"]
-            default: "afbeelding"
-          - label: "Tweede afbeelding bestand (alleen bij Paar)"
-            name: "bestand_2"
-            widget: "file"
-            hint: "Alleen invullen bij layout Paar (rechts) — 800 × 600 px (4:3) — max. 800 KB"
-      - { label: "Gepubliceerd", name: "gepubliceerd", widget: "boolean", default: true }
-      - { label: "Volgorde",     name: "volgorde",     widget: "number",  default: 99 }
+          - label: "Cases"
+            name: "cases"
+            widget: "list"
+            label_singular: "Case"
+            hint: "Voeg cases toe of verwijder ze. De volgorde hier bepaalt de volgorde op de website. De 4 onderste (meest recent toegevoegde) verschijnen op de homepage."
+            fields:
+              - { label: "Klantnaam",          name: "client",       widget: "string" }
+              - { label: "Korte beschrijving",  name: "beschrijving", widget: "text" }
+              - label: "Type / Tags"
+                name: "type"
+                widget: "list"
+                field: { label: "Label", name: "label", widget: "string" }
+                hint: "Gebruik exact dezelfde labels als in Globaal → Case labels"
+              - label: "Cover modus"
+                name: "cover_modus"
+                widget: "select"
+                options: ["afbeelding", "video"]
+                default: "afbeelding"
+              - label: "Cover bestand"
+                name: "cover"
+                widget: "file"
+                hint: "Aanbevolen: 1200 × 800 px (3:2) — max. 1 MB"
+              - label: "Hero modus (detailpagina)"
+                name: "hero_modus"
+                widget: "select"
+                options: ["afbeelding", "video"]
+                default: "afbeelding"
+              - label: "Hero bestand"
+                name: "hero"
+                widget: "file"
+                hint: "Aanbevolen: 1600 × 900 px (16:9) — max. 1 MB"
+              - label: "Accordion (dropdown secties)"
+                name: "accordion"
+                widget: "list"
+                hint: "Voeg secties toe of verwijder ze. Volgorde bepaalt de weergave."
+                fields:
+                  - { label: "Titel",  name: "titel",  widget: "string" }
+                  - { label: "Inhoud", name: "inhoud", widget: "text" }
+              - label: "Team"
+                name: "team"
+                widget: "list"
+                hint: "Iedereen die aan dit project heeft gewerkt."
+                fields:
+                  - { label: "Naam", name: "naam", widget: "string" }
+                  - { label: "Rol",  name: "rol",  widget: "string" }
+              - label: "Galerij rijen"
+                name: "galerie"
+                widget: "list"
+                hint: "Elke rij is óf een volledige breedte-afbeelding óf twee naast elkaar."
+                fields:
+                  - label: "Layout"
+                    name: "layout"
+                    widget: "select"
+                    options:
+                      - { label: "Volledig (één afbeelding breed)", value: "volledig" }
+                      - { label: "Paar (twee naast elkaar)",        value: "paar" }
+                    default: "volledig"
+                  - label: "Afbeelding modus"
+                    name: "modus"
+                    widget: "select"
+                    options: ["afbeelding", "video"]
+                    default: "afbeelding"
+                  - label: "Afbeelding bestand"
+                    name: "bestand"
+                    widget: "file"
+                    hint: "Volledig: 1600 × 900 px (16:9) — Paar links: 800 × 600 px (4:3) — max. 800 KB"
+                  - label: "Tweede afbeelding modus (alleen bij Paar)"
+                    name: "modus_2"
+                    widget: "select"
+                    options: ["afbeelding", "video"]
+                    default: "afbeelding"
+                  - label: "Tweede afbeelding bestand (alleen bij Paar)"
+                    name: "bestand_2"
+                    widget: "file"
+                    hint: "Alleen invullen bij layout Paar (rechts) — 800 × 600 px (4:3) — max. 800 KB"
+              - { label: "Gepubliceerd", name: "gepubliceerd", widget: "boolean", default: true }
 
   # ── Homepage ────────────────────────────────────────────────────────────────
   - name: "home"

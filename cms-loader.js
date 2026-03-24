@@ -188,39 +188,36 @@
    * We use a cases-manifest.json file (array of filenames) if available,
    * otherwise fall back to fetching known filenames from the existing HTML.
    */
+  function slugify(str) {
+    return String(str).toLowerCase()
+      .replace(/[àáâãäå]/g, 'a').replace(/[èéêë]/g, 'e')
+      .replace(/[ìíîï]/g, 'i').replace(/[òóôõöø]/g, 'o')
+      .replace(/[ùúûü]/g, 'u').replace(/ç/g, 'c').replace(/ñ/g, 'n')
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+
   async function loadCases() {
-    // Try manifest first
-    let filenames = await fetchJSON('/_cases/manifest.json');
-    if (!filenames) {
-      // Fall back: derive filenames from existing case-card data-case attributes
-      filenames = Array.from(document.querySelectorAll('[data-case-slug]'))
-        .map(el => el.getAttribute('data-case-slug') + '.md');
-    }
-    if (!filenames || !filenames.length) return [];
+    const data = await fetchJSON('/data/cases.json');
+    if (!data || !Array.isArray(data.cases)) return [];
 
-    const cases = [];
-    for (const fn of filenames) {
-      const raw = await fetchText('/_cases/' + fn);
-      if (!raw) continue;
-      const { data, body } = parseFrontmatter(raw);
-      if (!data.gepubliceerd) continue;
-      cases.push({
-        slug: fn.replace(/\.md$/, ''),
-        client: data.client || '',
-        beschrijving: data.beschrijving || '',
-        type: Array.isArray(data.type) ? data.type : (data.type ? [data.type] : []),
-        cover: data.cover || '',
-        cover_modus: data.cover_modus || 'afbeelding',
-        hero: data.hero || data.cover || '',
-        hero_modus: data.hero_modus || data.cover_modus || 'afbeelding',
-        galerie: Array.isArray(data.galerie) ? data.galerie : [],
-        volgorde: data.volgorde || 99,
-        gepubliceerd: data.gepubliceerd,
-        body,
-      });
-    }
-
-    return cases.sort((a, b) => a.volgorde - b.volgorde);
+    return data.cases
+      .filter(c => c.gepubliceerd !== false)
+      .map(c => ({
+        slug:        slugify(c.client),
+        client:      c.client      || '',
+        beschrijving: c.beschrijving || '',
+        type:        Array.isArray(c.type)
+          ? c.type.map(function(t) { return typeof t === 'object' ? (t.label || t.item || String(t)) : String(t); })
+          : (c.type ? [String(c.type)] : []),
+        cover:       c.cover       || '',
+        cover_modus: c.cover_modus || 'afbeelding',
+        hero:        c.hero        || c.cover || '',
+        hero_modus:  c.hero_modus  || c.cover_modus || 'afbeelding',
+        galerie:     Array.isArray(c.galerie) ? c.galerie : [],
+        accordion:   Array.isArray(c.accordion) ? c.accordion : [],
+        team:        Array.isArray(c.team) ? c.team : [],
+        gepubliceerd: c.gepubliceerd !== false,
+      }));
   }
 
   /** Build a case card element using existing CSS classes */
@@ -363,7 +360,7 @@
     const cases = await loadCases();
     if (!cases.length) return;
 
-    const recent = cases.slice(0, 4);
+    const recent = cases.slice(-4).reverse();
     // Clear existing static stack cards
     stack.querySelectorAll('.stack-card').forEach(el => el.remove());
 
@@ -399,40 +396,38 @@
     const slug   = params.get('case');
     if (!slug) return;
 
-    const raw = await fetchText(`/_cases/${slug}.md`);
-    if (!raw) return;
+    const data = await fetchJSON('/data/cases.json');
+    if (!data || !Array.isArray(data.cases)) return;
 
-    const { data, body } = parseFrontmatter(raw);
+    const c = data.cases.find(function (item) {
+      return slugify(item.client) === slug;
+    });
+    if (!c) return;
 
     // Client name
-    document.querySelectorAll('[data-cms="case.client"]').forEach(el => {
-      el.textContent = data.client || '';
+    document.querySelectorAll('[data-cms="case.client"], .case-info__client').forEach(el => {
+      el.textContent = c.client || '';
     });
 
-    // Scope / tags
-    const tags = Array.isArray(data.type) ? data.type : (data.type ? [data.type] : []);
-    document.querySelectorAll('.scope-tags').forEach(el => {
+    // Tags
+    const tags = Array.isArray(c.type) ? c.type : (c.type ? [c.type] : []);
+    document.querySelectorAll('.scope-tags, .case-info__tags').forEach(el => {
       el.innerHTML = tags.map(t => `<span class="tag">${t}</span>`).join('');
     });
 
     // Hero media
-    document.querySelectorAll('[data-cms-media="case.hero"]').forEach(el => {
-      laadMedia(el, data.hero_modus || data.cover_modus || 'afbeelding', data.hero || data.cover);
-    });
-
-    // Client name in page heading
-    document.querySelectorAll('.case-info__client').forEach(el => {
-      el.textContent = data.client || '';
+    document.querySelectorAll('[data-cms-media="case.hero"], .case-hero').forEach(el => {
+      laadMedia(el, c.hero_modus || c.cover_modus || 'afbeelding', c.hero || c.cover);
     });
 
     // Description
     document.querySelectorAll('.case-info__desc').forEach(el => {
-      el.textContent = data.beschrijving || '';
+      el.textContent = c.beschrijving || '';
     });
 
     // Team
     const teamEl = document.getElementById('case-team');
-    const team = Array.isArray(data.team) ? data.team : [];
+    const team = Array.isArray(c.team) ? c.team : [];
     if (teamEl && team.length) {
       teamEl.innerHTML = '<p class="case-info__team-title">Team</p>';
       team.forEach(function (member) {
@@ -447,14 +442,16 @@
 
     // Accordion
     const accordionEl = document.getElementById('case-accordion');
-    const accordion = Array.isArray(data.accordion) ? data.accordion : [];
+    const accordion = Array.isArray(c.accordion) ? c.accordion : [];
     if (accordionEl && accordion.length) {
       accordionEl.innerHTML = '';
       accordion.forEach(function (item, i) {
         const uid = 'acc-dyn-' + i;
         const div = document.createElement('div');
         div.className = 'accordion__item';
-        const inhoud = (item.inhoud || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g, '<br>');
+        const inhoud = (item.inhoud || '')
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+          .replace(/\n/g, '<br>');
         div.innerHTML =
           '<button class="accordion__trigger" aria-expanded="false"' +
             ' aria-controls="' + uid + '" id="acc-btn-' + uid + '">' +
@@ -471,7 +468,7 @@
 
     // Gallery
     const galleryEl = document.getElementById('case-gallery');
-    const galerie = Array.isArray(data.galerie) ? data.galerie : [];
+    const galerie = Array.isArray(c.galerie) ? c.galerie : [];
     if (galleryEl && galerie.length) {
       galleryEl.innerHTML = '';
       galerie.forEach(function (item) {
@@ -504,8 +501,8 @@
       });
     }
 
-    // Update page title
-    if (data.client) document.title = data.client + ' \u2014 FVN Studio';
+    // Page title
+    if (c.client) document.title = c.client + ' \u2014 FVN Studio';
   }
 
   // ── Disciplines rendering (homepage) ─────────────────────────────────────────
