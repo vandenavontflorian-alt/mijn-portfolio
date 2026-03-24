@@ -1,18 +1,12 @@
 {
-<<<<<<< HEAD
-  "hero_modus": "video",
-  "hero_bestand": "",
+  "hero_modus": "afbeelding",
+  "hero_bestand": "/uploads/kleurstof.jpg",
   "hero_content_zichtbaar": true,
   "hero_uitlijning": "midden",
   "hero_blokken": [
     { "tag": "h1", "tekst": "We maken dingen die tellen.", "zichtbaar": true }
   ],
   "hero_knoppen": [],
-=======
-  "hero_titel": "Test",
-  "hero_modus": "afbeelding",
-  "hero_bestand": "/uploads/kleurstof.jpg",
->>>>>>> 4a0c247cea5e7b3e5bb367cf1b0439bd7e919465
   "intro_titel": "Een studio die\nvorm geeft aan\nwat telt.",
   "intro_tekst_1": "FVN Studio is een onafhankelijk creatief bureau gebaseerd in Gent. We werken voor merken die iets te zeggen hebben — en die begrijpen dat hoe je iets zegt net zo belangrijk is als wat je zegt.",
   "intro_tekst_2": "Van merkidentiteit tot packaging, van digitale platformen tot gedrukte publicaties: we ontwerpen met precisie en bedoeling. Geen overbodige decoratie, geen onnodig lawaai. Enkel wat werkt.",

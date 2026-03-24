@@ -15,14 +15,14 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Klantnaam",       name: "client",       widget: "string" }
+      - { label: "Klantnaam",          name: "client",       widget: "string" }
       - { label: "Korte beschrijving", name: "beschrijving", widget: "text" }
       - label: "Type / Tags"
         name: "type"
         widget: "list"
         field: { label: "Label", name: "label", widget: "string" }
         hint: "Gebruik exact dezelfde labels als gedefinieerd in Globaal → Case labels"
-      - label: "Cover mediazone"
+      - label: "Cover modus"
         name: "cover_modus"
         widget: "select"
         options: ["afbeelding", "video"]
@@ -30,10 +30,11 @@ collections:
       - label: "Cover bestand"
         name: "cover"
         widget: "file"
+        hint: "Aanbevolen: 1200 × 800 px (3:2) — max. 1 MB"
         media_library:
           config:
             multiple: false
-      - label: "Hero mediazone (detailpagina)"
+      - label: "Hero modus (detailpagina)"
         name: "hero_modus"
         widget: "select"
         options: ["afbeelding", "video"]
@@ -41,19 +42,53 @@ collections:
       - label: "Hero bestand"
         name: "hero"
         widget: "file"
-      - label: "Galerij"
+        hint: "Aanbevolen: 1600 × 900 px (16:9) — max. 1 MB"
+      - label: "Accordion (dropdown secties)"
+        name: "accordion"
+        widget: "list"
+        hint: "Voeg secties toe of verwijder ze. Volgorde bepaalt de weergave."
+        fields:
+          - { label: "Titel",   name: "titel",  widget: "string" }
+          - { label: "Inhoud",  name: "inhoud", widget: "text" }
+      - label: "Team"
+        name: "team"
+        widget: "list"
+        hint: "Iedereen die aan dit project heeft gewerkt."
+        fields:
+          - { label: "Naam", name: "naam", widget: "string" }
+          - { label: "Rol",  name: "rol",  widget: "string" }
+      - label: "Galerij rijen"
         name: "galerie"
         widget: "list"
+        hint: "Elke rij is óf een volledige breedte-afbeelding óf twee naast elkaar."
         fields:
-          - label: "Modus"
+          - label: "Layout"
+            name: "layout"
+            widget: "select"
+            options:
+              - { label: "Volledig (één afbeelding breed)", value: "volledig" }
+              - { label: "Paar (twee naast elkaar)",        value: "paar" }
+            default: "volledig"
+          - label: "Afbeelding modus"
             name: "modus"
             widget: "select"
             options: ["afbeelding", "video"]
             default: "afbeelding"
-          - { label: "Bestand", name: "bestand", widget: "file" }
-      - { label: "Volledige inhoud", name: "body",        widget: "markdown" }
-      - { label: "Gepubliceerd",     name: "gepubliceerd", widget: "boolean", default: true }
-      - { label: "Volgorde",         name: "volgorde",    widget: "number",  default: 99 }
+          - label: "Afbeelding bestand"
+            name: "bestand"
+            widget: "file"
+            hint: "Volledig: 1600 × 900 px (16:9) — Paar (links): 800 × 600 px (4:3) — max. 800 KB"
+          - label: "Tweede afbeelding modus (alleen bij Paar)"
+            name: "modus_2"
+            widget: "select"
+            options: ["afbeelding", "video"]
+            default: "afbeelding"
+          - label: "Tweede afbeelding bestand (alleen bij Paar)"
+            name: "bestand_2"
+            widget: "file"
+            hint: "Alleen invullen bij layout Paar (rechts) — 800 × 600 px (4:3) — max. 800 KB"
+      - { label: "Gepubliceerd", name: "gepubliceerd", widget: "boolean", default: true }
+      - { label: "Volgorde",     name: "volgorde",     widget: "number",  default: 99 }
 
   # ── Homepage ────────────────────────────────────────────────────────────────
   - name: "home"
@@ -68,7 +103,7 @@ collections:
             widget: "select"
             options: ["afbeelding", "video"]
             default: "video"
-          - { label: "Hero bestand",       name: "hero_bestand",     widget: "file" }
+          - { label: "Hero bestand",       name: "hero_bestand",     widget: "file", hint: "Aanbevolen: 1920 × 1080 px (16:9) — max. 2 MB" }
           - { label: "Hero inhoud tonen",  name: "hero_content_zichtbaar", widget: "boolean", default: true }
           - label: "Hero uitlijning"
             name: "hero_uitlijning"
@@ -140,7 +175,7 @@ collections:
             widget: "select"
             options: ["afbeelding", "video"]
             default: "afbeelding"
-          - { label: "Portret bestand", name: "portret_bestand", widget: "file" }
+          - { label: "Portret bestand", name: "portret_bestand", widget: "file", hint: "Aanbevolen: 800 × 1000 px (4:5) — max. 1 MB" }
 
   # ── Services ────────────────────────────────────────────────────────────────
   - name: "services"
@@ -165,7 +200,7 @@ collections:
                 widget: "select"
                 options: ["afbeelding", "video"]
                 default: "afbeelding"
-              - { label: "Beeld bestand", name: "beeld_bestand", widget: "file" }
+              - { label: "Beeld bestand", name: "beeld_bestand", widget: "file", hint: "Aanbevolen: 1200 × 900 px (4:3) — max. 1 MB" }
 
   # ── Contact ─────────────────────────────────────────────────────────────────
   - name: "contact"
@@ -191,8 +226,8 @@ collections:
         file: "data/globaal.json"
         fields:
           - { label: "Logo tekst",                         name: "logo",                widget: "string" }
-          - { label: "Logo wit (op donkere achtergrond)", name: "logo_wit_bestand",    widget: "file" }
-          - { label: "Logo zwart (op witte achtergrond)", name: "logo_zwart_bestand",  widget: "file" }
+          - { label: "Logo wit (op donkere achtergrond)", name: "logo_wit_bestand",    widget: "file", hint: "SVG aanbevolen, of PNG transparant — max. 200 KB" }
+          - { label: "Logo zwart (op witte achtergrond)", name: "logo_zwart_bestand",  widget: "file", hint: "SVG aanbevolen, of PNG transparant — max. 200 KB" }
           - { label: "Footer tagline",     name: "footer_tagline",    widget: "text" }
           - { label: "Footer e-mail",      name: "footer_email",      widget: "string" }
           - { label: "Footer locatie",     name: "footer_locatie",    widget: "string" }

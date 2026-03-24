@@ -420,23 +420,92 @@
       laadMedia(el, data.hero_modus || data.cover_modus || 'afbeelding', data.hero || data.cover);
     });
 
-    // Body content
-    document.querySelectorAll('[data-cms="case.body"]').forEach(el => {
-      el.innerHTML = markdownToHTML(body);
+    // Client name in page heading
+    document.querySelectorAll('.case-info__client').forEach(el => {
+      el.textContent = data.client || '';
     });
+
+    // Description
+    document.querySelectorAll('.case-info__desc').forEach(el => {
+      el.textContent = data.beschrijving || '';
+    });
+
+    // Team
+    const teamEl = document.getElementById('case-team');
+    const team = Array.isArray(data.team) ? data.team : [];
+    if (teamEl && team.length) {
+      teamEl.innerHTML = '<p class="case-info__team-title">Team</p>';
+      team.forEach(function (member) {
+        const naam = typeof member === 'object' ? (member.naam || '') : String(member);
+        const rol  = typeof member === 'object' ? (member.rol  || '') : '';
+        const p = document.createElement('p');
+        p.className = 'case-info__team-list';
+        p.textContent = rol ? naam + ' \u2014 ' + rol : naam;
+        teamEl.appendChild(p);
+      });
+    }
+
+    // Accordion
+    const accordionEl = document.getElementById('case-accordion');
+    const accordion = Array.isArray(data.accordion) ? data.accordion : [];
+    if (accordionEl && accordion.length) {
+      accordionEl.innerHTML = '';
+      accordion.forEach(function (item, i) {
+        const uid = 'acc-dyn-' + i;
+        const div = document.createElement('div');
+        div.className = 'accordion__item';
+        const inhoud = (item.inhoud || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g, '<br>');
+        div.innerHTML =
+          '<button class="accordion__trigger" aria-expanded="false"' +
+            ' aria-controls="' + uid + '" id="acc-btn-' + uid + '">' +
+            (item.titel || '') +
+            '<span class="accordion__chevron" aria-hidden="true"></span>' +
+          '</button>' +
+          '<div class="accordion__body" id="' + uid + '"' +
+            ' role="region" aria-labelledby="acc-btn-' + uid + '">' +
+            '<div class="accordion__content"><p>' + inhoud + '</p></div>' +
+          '</div>';
+        accordionEl.appendChild(div);
+      });
+    }
 
     // Gallery
+    const galleryEl = document.getElementById('case-gallery');
     const galerie = Array.isArray(data.galerie) ? data.galerie : [];
-    document.querySelectorAll('[data-cms-media^="case.galerie_"]').forEach((el, i) => {
-      const g = galerie[i];
-      if (!g) return;
-      const modus  = g.modus  || 'afbeelding';
-      const bestand = g.bestand || g;
-      laadMedia(el, modus, bestand);
-    });
+    if (galleryEl && galerie.length) {
+      galleryEl.innerHTML = '';
+      galerie.forEach(function (item) {
+        const layout = item.layout || 'volledig';
+        if (layout === 'paar') {
+          const pair = document.createElement('div');
+          pair.className = 'case-gallery__pair reveal';
+          const img1 = document.createElement('div');
+          img1.className = 'case-gallery__img';
+          img1.setAttribute('role', 'img');
+          if (item.bestand) laadMedia(img1, item.modus || 'afbeelding', item.bestand);
+          const img2 = document.createElement('div');
+          img2.className = 'case-gallery__img';
+          img2.setAttribute('role', 'img');
+          if (item.bestand_2) laadMedia(img2, item.modus_2 || 'afbeelding', item.bestand_2);
+          pair.appendChild(img1);
+          pair.appendChild(img2);
+          galleryEl.appendChild(pair);
+        } else {
+          const wrap = document.createElement('div');
+          wrap.className = 'case-gallery__item';
+          wrap.setAttribute('data-layout', 'full');
+          const img = document.createElement('div');
+          img.className = 'case-gallery__img reveal';
+          img.setAttribute('role', 'img');
+          if (item.bestand) laadMedia(img, item.modus || 'afbeelding', item.bestand);
+          wrap.appendChild(img);
+          galleryEl.appendChild(wrap);
+        }
+      });
+    }
 
     // Update page title
-    if (data.client) document.title = `${data.client} — FVN Studio`;
+    if (data.client) document.title = data.client + ' \u2014 FVN Studio';
   }
 
   // ── Disciplines rendering (homepage) ─────────────────────────────────────────
@@ -561,6 +630,9 @@
       });
       contentEl.appendChild(btnsEl);
     }
+
+    // Zichtbaar maken nadat inhoud is opgebouwd (voorkomt flash van statische fallback)
+    contentEl.style.opacity = '1';
   }
 
   // ── Filter bar rendering (cases pagina) ──────────────────────────────────────

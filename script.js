@@ -146,38 +146,29 @@
   /* ============================================================
      6. Accordion (case-detail) — maxHeight toggle
      ============================================================ */
-  const accordionTriggers = document.querySelectorAll('.accordion__trigger');
+  document.addEventListener('click', function (e) {
+    const trigger = e.target.closest('.accordion__trigger');
+    if (!trigger) return;
+    const item = trigger.closest('.accordion__item');
+    if (!item) return;
+    const body = item.querySelector('.accordion__body');
+    if (!body) return;
 
-  accordionTriggers.forEach(trigger => {
-    trigger.addEventListener('click', () => {
-      const item = trigger.closest('.accordion__item');
-      if (!item) return;
-      const body = item.querySelector('.accordion__body');
-      if (!body) return;
-
-      const isOpen = item.classList.contains('open');
-
-      if (isOpen) {
-        // Animate close: set explicit height first, then collapse
-        body.style.maxHeight = body.scrollHeight + 'px';
-        requestAnimationFrame(() => {
-          body.style.maxHeight = '0';
-        });
-        item.classList.remove('open');
-        trigger.setAttribute('aria-expanded', 'false');
-      } else {
-        item.classList.add('open');
-        trigger.setAttribute('aria-expanded', 'true');
-        body.style.maxHeight = body.scrollHeight + 'px';
-
-        body.addEventListener('transitionend', function onEnd() {
-          if (item.classList.contains('open')) {
-            body.style.maxHeight = 'none';
-          }
-          body.removeEventListener('transitionend', onEnd);
-        });
-      }
-    });
+    const isOpen = item.classList.contains('open');
+    if (isOpen) {
+      body.style.maxHeight = body.scrollHeight + 'px';
+      requestAnimationFrame(() => { body.style.maxHeight = '0'; });
+      item.classList.remove('open');
+      trigger.setAttribute('aria-expanded', 'false');
+    } else {
+      item.classList.add('open');
+      trigger.setAttribute('aria-expanded', 'true');
+      body.style.maxHeight = body.scrollHeight + 'px';
+      body.addEventListener('transitionend', function onEnd() {
+        if (item.classList.contains('open')) body.style.maxHeight = 'none';
+        body.removeEventListener('transitionend', onEnd);
+      });
+    }
   });
 
   /* ============================================================
