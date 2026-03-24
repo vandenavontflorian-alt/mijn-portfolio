@@ -1,144 +1,51 @@
 {
   "cases": [
     {
-      "client": "Maison Colette",
-      "beschrijving": "Merkidentiteit en verpakkingslijn voor een Belgisch parfumhuis",
-      "type": ["Branding", "Packaging", "Art Direction"],
-      "cover_modus": "afbeelding",
-      "cover": "",
-      "hero_modus": "afbeelding",
-      "hero": "",
       "accordion": [
-        { "titel": "Briefing", "inhoud": "Maison Colette had een visuele taal nodig die aansloot bij hun filosofie: geur als geheugen, als intimiteit, als stilte. Het merk bestond enkel digitaal en wilde uitbreiden naar fysieke retail. We kregen volledige creatieve vrijheid, op voorwaarde dat het resultaat tijdloos bleef." },
-        { "titel": "Aanpak", "inhoud": "We startten met een uitgebreid onderzoek naar de parfumwereld: van klassieke Parijse maisons tot hedendaagse niche labels. Uit die research destilleerden we drie kernwoorden: precisie, stilte, herinnering.\n\nHet ontwerp groeide vanuit typografie. Een aangepast lettertype als ankerpunt, aangevuld met een systeem van lijnen en witruimte dat op elke drager herkenbaar bleef." },
-        { "titel": "Resultaat", "inhoud": "Een complete merkidentiteit: logo, typografisch systeem, kleurpalet (zwart-wit-creme), twaalf verpakkingsontwerpen en een stijlgids van 48 pagina's. Het merk debuteerde op Esxence Milaan 2025." },
-        { "titel": "Technische details", "inhoud": "Alle ontwerpen werden uitgewerkt in Adobe Illustrator en Photoshop. Verpakkingen werden geproduceerd via diepdruk op Favini Alga Carta (100% hernieuwbaar)." }
+        {
+          "titel": "Briefing",
+          "inhoud": "Maison Colette had een visuele taal nodig die aansloot bij hun filosofie: geur als geheugen, als intimiteit, als stilte. Het merk bestond enkel digitaal en wilde uitbreiden naar fysieke retail. We kregen volledige creatieve vrijheid, op voorwaarde dat het resultaat tijdloos bleef."
+        },
+        {
+          "titel": "Aanpak",
+          "inhoud": "We startten met een uitgebreid onderzoek naar de parfumwereld: van klassieke Parijse maisons tot hedendaagse niche labels. Uit die research destilleerden we drie kernwoorden: precisie, stilte, herinnering.\n\nHet ontwerp groeide vanuit typografie. Een aangepast lettertype als ankerpunt, aangevuld met een systeem van lijnen en witruimte dat op elke drager herkenbaar bleef."
+        },
+        {
+          "titel": "Resultaat",
+          "inhoud": "Een complete merkidentiteit: logo, typografisch systeem, kleurpalet (zwart-wit-creme), twaalf verpakkingsontwerpen en een stijlgids van 48 pagina's. Het merk debuteerde op Esxence Milaan 2025."
+        },
+        {
+          "titel": "Technische details",
+          "inhoud": "Alle ontwerpen werden uitgewerkt in Adobe Illustrator en Photoshop. Verpakkingen werden geproduceerd via diepdruk op Favini Alga Carta (100% hernieuwbaar)."
+        }
       ],
-      "team": [
-        { "naam": "Florian Van de Navont", "rol": "Concept, ontwerp & productie" }
-      ],
-      "galerie": [],
-      "gepubliceerd": true
-    },
-    {
-      "client": "Graanmarkt 13",
-      "beschrijving": "Digitale heropbouw van een iconiek Antwerps concept-adres",
-      "type": ["Web", "Art Direction"],
+      "beschrijving": "Merkidentiteit en verpakkingslijn voor een Belgisch parfumhuis",
+      "client": "Maison Colette",
+      "cover": "/uploads/nico-safke-1.jpg",
       "cover_modus": "afbeelding",
-      "cover": "",
-      "hero_modus": "afbeelding",
-      "hero": "",
-      "accordion": [],
-      "team": [
-        { "naam": "Florian Van de Navont", "rol": "Concept, ontwerp & productie" }
+      "gepubliceerd": true,
+      "type": [
+        "Branding",
+        "Packaging",
+        "Art Direction"
       ],
-      "galerie": [],
-      "gepubliceerd": true
-    },
-    {
-      "client": "Rotor",
-      "beschrijving": "Jaarverslag en publicatielijn voor een circulair bouwmaterialen centrum",
-      "type": ["Print", "Redactioneel"],
-      "cover_modus": "afbeelding",
-      "cover": "",
-      "hero_modus": "afbeelding",
-      "hero": "",
-      "accordion": [],
-      "team": [
-        { "naam": "Florian Van de Navont", "rol": "Concept, ontwerp & productie" }
+      "hero": "/uploads/nico-safke-1.jpg",
+      "galerie": [
+        {
+          "layout": "volledig",
+          "modus": "afbeelding",
+          "modus_2": "afbeelding",
+          "bestand": "/uploads/nico-safke-1.jpg",
+          "bestand_2": "/uploads/nico-safke-1.jpg"
+        }
       ],
-      "galerie": [],
-      "gepubliceerd": true
-    },
-    {
-      "client": "Bold Brewery",
-      "beschrijving": "Complete merkopbouw voor een ambachtelijke Gentse brouwerij",
-      "type": ["Branding", "Packaging"],
-      "cover_modus": "afbeelding",
-      "cover": "",
       "hero_modus": "afbeelding",
-      "hero": "",
-      "accordion": [],
       "team": [
-        { "naam": "Florian Van de Navont", "rol": "Concept, ontwerp & productie" }
-      ],
-      "galerie": [],
-      "gepubliceerd": true
-    },
-    {
-      "client": "Studio Roos",
-      "beschrijving": "Portfoliosite en huisstijl voor een interieurarchitect",
-      "type": ["Branding", "Web"],
-      "cover_modus": "afbeelding",
-      "cover": "",
-      "hero_modus": "afbeelding",
-      "hero": "",
-      "accordion": [],
-      "team": [
-        { "naam": "Florian Van de Navont", "rol": "Concept, ontwerp & productie" }
-      ],
-      "galerie": [],
-      "gepubliceerd": true
-    },
-    {
-      "client": "Kompass Koffie",
-      "beschrijving": "Rebranding en nieuwe verpakkingsfamilie voor een Brusselse specialty coffee roaster",
-      "type": ["Branding", "Packaging", "Print"],
-      "cover_modus": "afbeelding",
-      "cover": "",
-      "hero_modus": "afbeelding",
-      "hero": "",
-      "accordion": [],
-      "team": [
-        { "naam": "Florian Van de Navont", "rol": "Concept, ontwerp & productie" }
-      ],
-      "galerie": [],
-      "gepubliceerd": true
-    },
-    {
-      "client": "Selene Wines",
-      "beschrijving": "Identiteit en verpakkingslijn voor een nieuwe natuurwijngaard in de Ardennen",
-      "type": ["Branding", "Packaging", "Art Direction"],
-      "cover_modus": "afbeelding",
-      "cover": "",
-      "hero_modus": "afbeelding",
-      "hero": "",
-      "accordion": [],
-      "team": [
-        { "naam": "Florian Van de Navont", "rol": "Concept, ontwerp & productie" }
-      ],
-      "galerie": [],
-      "gepubliceerd": true
-    },
-    {
-      "client": "KASK",
-      "beschrijving": "Nieuwe digitale omgeving voor de Gentse kunsthogeschool",
-      "type": ["Web", "Redactioneel"],
-      "cover_modus": "afbeelding",
-      "cover": "",
-      "hero_modus": "afbeelding",
-      "hero": "",
-      "accordion": [],
-      "team": [
-        { "naam": "Florian Van de Navont", "rol": "Concept, ontwerp & productie" }
-      ],
-      "galerie": [],
-      "gepubliceerd": true
-    },
-    {
-      "client": "Mira Architecten",
-      "beschrijving": "Volledige merkopbouw en portfoliowebsite voor een jong Antwerps architectenbureau",
-      "type": ["Branding", "Web", "Art Direction"],
-      "cover_modus": "afbeelding",
-      "cover": "",
-      "hero_modus": "afbeelding",
-      "hero": "",
-      "accordion": [],
-      "team": [
-        { "naam": "Florian Van de Navont", "rol": "Concept, ontwerp & productie" }
-      ],
-      "galerie": [],
-      "gepubliceerd": true
+        {
+          "naam": "Florian Van de Navont",
+          "rol": "Concept, ontwerp & productie"
+        }
+      ]
     }
   ]
 }
