@@ -1,9 +1,23 @@
 {
-  "hero_titel": "We maken dingen die tellen.",
   "hero_modus": "video",
   "hero_bestand": "",
+  "hero_content_zichtbaar": true,
+  "hero_uitlijning": "midden",
+  "hero_blokken": [
+    { "tag": "h1", "tekst": "We maken dingen die tellen.", "zichtbaar": true }
+  ],
+  "hero_knoppen": [],
   "intro_titel": "Een studio die\nvorm geeft aan\nwat telt.",
   "intro_tekst_1": "FVN Studio is een onafhankelijk creatief bureau gebaseerd in Gent. We werken voor merken die iets te zeggen hebben — en die begrijpen dat hoe je iets zegt net zo belangrijk is als wat je zegt.",
   "intro_tekst_2": "Van merkidentiteit tot packaging, van digitale platformen tot gedrukte publicaties: we ontwerpen met precisie en bedoeling. Geen overbodige decoratie, geen onnodig lawaai. Enkel wat werkt.",
-  "intro_link_tekst": "Over het bureau →"
+  "intro_link_tekst": "Over het bureau →",
+  "disciplines_titel": "Disciplines",
+  "disciplines": [
+    "Branding & Identiteit",
+    "Packaging Design",
+    "Web & Digital",
+    "Art Direction",
+    "Motion & Video",
+    "Print & Redactioneel"
+  ]
 }

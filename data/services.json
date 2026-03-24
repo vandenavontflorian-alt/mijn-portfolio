@@ -1,18 +1,44 @@
 {
-  "titel": "Wat we doen",
+  "titel": "Creatieve diensten voor merken met ambitie.",
   "cta_titel": "Klaar om te starten?",
-  "cta_sub": "Vertel ons over je project en we kijken samen wat mogelijk is.",
+  "cta_sub": "Vertel ons over je project. We komen graag kennismaken.",
   "cta_knop": "Neem contact op",
-  "dienst_1_beeld_modus": "afbeelding",
-  "dienst_1_beeld_bestand": "",
-  "dienst_2_beeld_modus": "afbeelding",
-  "dienst_2_beeld_bestand": "",
-  "dienst_3_beeld_modus": "afbeelding",
-  "dienst_3_beeld_bestand": "",
-  "dienst_4_beeld_modus": "afbeelding",
-  "dienst_4_beeld_bestand": "",
-  "dienst_5_beeld_modus": "afbeelding",
-  "dienst_5_beeld_bestand": "",
-  "dienst_6_beeld_modus": "afbeelding",
-  "dienst_6_beeld_bestand": ""
+  "diensten": [
+    {
+      "naam": "Branding & Identiteit",
+      "omschrijving": "Een merk is meer dan een logo. We bouwen visuele systemen die werken in elke context — van visitekaartje tot billboard, van social media tot verpakking. Van strategie en naming tot het complete visuele verhaal.",
+      "beeld_modus": "afbeelding",
+      "beeld_bestand": ""
+    },
+    {
+      "naam": "Packaging Design",
+      "omschrijving": "Verpakking is het eerste fysieke contact tussen merk en consument. We ontwerpen voor de winkelrekken van morgen: duurzame materialen, scherpe typografie, een structuur die vertelt wie je bent nog voor iemand de doos opengemaakt heeft.",
+      "beeld_modus": "afbeelding",
+      "beeld_bestand": ""
+    },
+    {
+      "naam": "Web & Digital",
+      "omschrijving": "Websites die presteren en overtuigen. Van concept en UX-architectuur tot front-end development: we bouwen digitale ervaringen die snel laden, toegankelijk zijn en er over vijf jaar nog goed uitzien. Geen frameworks die overmorgen verouderd zijn — enkel degelijk vakmanschap.",
+      "beeld_modus": "afbeelding",
+      "beeld_bestand": ""
+    },
+    {
+      "naam": "Art Direction",
+      "omschrijving": "Het regisseren van beelden, stemming en sfeer. We verzorgen de visuele begeleiding bij fotoshoots, campagnes en publicaties — zodat elk beeld klopt met het merkverhaal en de boodschap versterkt in plaats van verdunt.",
+      "beeld_modus": "afbeelding",
+      "beeld_bestand": ""
+    },
+    {
+      "naam": "Motion & Video",
+      "omschrijving": "Merkidentiteit in beweging. Van korte social content tot volledige merkfilms en animaties: we vertalen de visuele taal van je merk naar het bewegende beeld. Subtiel waar subtiel werkt, krachtig waar het moet.",
+      "beeld_modus": "afbeelding",
+      "beeld_bestand": ""
+    },
+    {
+      "naam": "Print & Redactioneel",
+      "omschrijving": "In een digitale wereld is gedrukt werk waardevoller dan ooit. We ontwerpen jaarverslagen, catalogi, magazines en boeken — met aandacht voor typografie, papier, afwerking en alles wat een publicatie aangenaam maakt om vast te houden.",
+      "beeld_modus": "afbeelding",
+      "beeld_bestand": ""
+    }
+  ]
 }

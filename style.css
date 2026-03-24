@@ -191,16 +191,14 @@ p {
   height: 32px;
   width: auto;
   object-fit: contain;
-  /* Fallback: show a placeholder box while the PNG hasn't been added yet */
-  min-width: 64px;
-  background: var(--gray-200);
-  border-radius: 2px;
 }
 
-/* On transparent nav (over dark video) invert the logo if it's dark */
-.nav--transparent .nav__logo-img {
-  filter: brightness(0) invert(1);
-}
+/* Logo swap: wit logo op donkere nav, zwart logo op witte nav */
+.nav__logo-img--zwart { display: none; }
+.nav__logo-img--wit   { display: block; }
+
+.nav.scrolled .nav__logo-img--wit   { display: none; }
+.nav.scrolled .nav__logo-img--zwart { display: block; }
 
 .nav__links {
   display: flex;
@@ -318,6 +316,10 @@ p {
   .nav--transparent .nav__links.open a {
     color: var(--white) !important;
   }
+
+  .nav--transparent .nav__links.open a.nav__cta {
+    color: var(--black) !important;
+  }
 }
 
 /* ============================================================
@@ -349,9 +351,6 @@ p {
   height: 28px;
   width: auto;
   object-fit: contain;
-  min-width: 56px;
-  /* Dark background → force white logo */
-  filter: brightness(0) invert(1);
 }
 
 .footer__tagline {
@@ -441,6 +440,11 @@ p {
   .footer__main {
     grid-template-columns: 1fr;
     gap: var(--sp-10);
+  }
+
+  .footer__col-title {
+    margin-bottom: var(--sp-4);
+    padding-top: var(--sp-2);
   }
 }
 
@@ -558,10 +562,24 @@ p {
   inset: 0;
   z-index: 2;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding-inline: var(--sp-8);
+  gap: var(--sp-6);
+}
+
+/* Uitlijning varianten */
+.hero-video__content--links {
+  align-items: flex-start;
+  text-align: left;
+  padding-inline-start: max(var(--sp-8), calc((100% - var(--max-w)) / 2 + var(--sp-8)));
+}
+.hero-video__content--rechts {
+  align-items: flex-end;
+  text-align: right;
+  padding-inline-end: max(var(--sp-8), calc((100% - var(--max-w)) / 2 + var(--sp-8)));
 }
 
 .hero-video__title {
@@ -572,6 +590,53 @@ p {
   line-height: 1.0;
   max-width: 14ch;
 }
+
+/* Tekststijlen binnen hero */
+.hero-video__content h2 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  max-width: 18ch;
+}
+.hero-video__content h3 {
+  font-size: clamp(1.5rem, 3.5vw, 2.75rem);
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  max-width: 22ch;
+}
+.hero-video__content p {
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 52ch;
+  line-height: 1.6;
+}
+
+/* Hero knoppen */
+.hero-video__btns {
+  display: flex;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  justify-content: inherit;
+}
+.hero-video__btn {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--sp-3) var(--sp-7);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: opacity var(--t-fast);
+}
+.hero-video__btn:hover { opacity: 0.8; }
+.hero-video__btn--primair  { background: var(--white);        color: var(--black); }
+.hero-video__btn--secundair { background: var(--black);       color: var(--white); }
+.hero-video__btn--outline  { border: 1px solid rgba(255,255,255,0.6); color: var(--white); }
 
 .hero-video__scroll {
   position: absolute;

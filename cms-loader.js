@@ -52,14 +52,27 @@
       if (val !== '' && !isNaN(val)) val = Number(val);
       data[key] = val;
     });
-    // Parse list fields (tags: [A, B, C])
-    match[1].split('\n').forEach(line => {
+    // Parse list fields — inline [A, B, C] and block (- item per line)
+    const lines = match[1].split('\n');
+    lines.forEach((line, idx) => {
       const sep = line.indexOf(':');
       if (sep === -1) return;
       const key = line.slice(0, sep).trim();
       const val = line.slice(sep + 1).trim();
+      // Inline list: type: [Branding, Packaging]
       if (val.startsWith('[') && val.endsWith(']')) {
         data[key] = val.slice(1, -1).split(',').map(s => s.trim().replace(/^["']|["']$/g, ''));
+        return;
+      }
+      // Block list: type:\n  - Branding\n  - Packaging
+      if (val === '') {
+        const items = [];
+        for (let j = idx + 1; j < lines.length; j++) {
+          const itemMatch = lines[j].match(/^\s+-\s+(.+)$/);
+          if (!itemMatch) break;
+          items.push(itemMatch[1].trim().replace(/^["']|["']$/g, ''));
+        }
+        if (items.length) data[key] = items;
       }
     });
     return { data, body: match[2] };
@@ -144,6 +157,14 @@
       const val = deepGet(store, key);
       if (val === null || val === undefined) return;
       el.textContent = String(val);
+    });
+
+    // Populate href attributes via data-cms-href
+    document.querySelectorAll('[data-cms-href]').forEach(el => {
+      const key = el.getAttribute('data-cms-href');
+      const val = deepGet(store, key);
+      if (!val) return;
+      el.href = String(val);
     });
   }
 
@@ -278,6 +299,17 @@
       grid.insertBefore(card, grid.querySelector('.cases-more') || null);
     });
 
+    // Meer-knop: verberg als geen extra cases, update aantal
+    const moreWrap  = document.getElementById('cases-more');
+    const moreCount = document.querySelector('.cases-more-count');
+    if (moreWrap) {
+      if (extra.length === 0) {
+        moreWrap.classList.add('hidden');
+      } else {
+        moreWrap.classList.remove('hidden');
+        if (moreCount) moreCount.textContent = '(+' + extra.length + ')';}
+    }
+
     // Re-attach filter & load-more (they query fresh articles)
     initCasesFilter(grid);
   }
@@ -407,6 +439,163 @@
     if (data.client) document.title = `${data.client} — FVN Studio`;
   }
 
+  // ── Disciplines rendering (homepage) ─────────────────────────────────────────
+
+  function renderDisciplines(store) {
+    const list = document.getElementById('home-disciplines-list');
+    if (!list) return;
+    const items = store.home && store.home.disciplines;
+    if (!items || !items.length) return;
+
+    list.innerHTML = '';
+    items.forEach(function (item) {
+      const li = document.createElement('li');
+      // Decap slaat enkelvoudige lijstvelden op als string of als object { item: '...' }
+      li.textContent = (typeof item === 'object' && item.item) ? item.item : item;
+      list.appendChild(li);
+    });
+  }
+
+  // ── Services rendering ────────────────────────────────────────────────────────
+
+  function renderServices(store) {
+    const container = document.getElementById('services-list');
+    if (!container) return;
+    const diensten = store.services && store.services.diensten;
+    if (!diensten || !diensten.length) return;
+
+    // Verwijder statische items, bewaar de CTA sectie buiten container
+    container.innerHTML = '';
+
+    const placeholderVariants = ['--1', '--2', '--3'];
+
+    diensten.forEach(function (dienst, i) {
+      const isReversed = i % 2 !== 0;
+      const num = String(i + 1).padStart(2, '0');
+      const slugId = 'svc-' + num + '-title';
+
+      const div = document.createElement('div');
+      div.className = 'service-item' + (isReversed ? ' service-item--reversed' : '');
+      div.setAttribute('aria-labelledby', slugId);
+
+      const textDiv = document.createElement('div');
+      textDiv.className = 'service-item__text visible';
+      textDiv.innerHTML =
+        '<p class="service-item__number">' + num + '</p>' +
+        '<h2 class="service-item__name" id="' + slugId + '">' + (dienst.naam || '') + '</h2>' +
+        '<p class="service-item__desc">' + (dienst.omschrijving || '') + '</p>';
+
+      const imgDiv = document.createElement('div');
+      imgDiv.className = 'service-item__image visible';
+      imgDiv.setAttribute('aria-hidden', 'true');
+      const variant = placeholderVariants[i % placeholderVariants.length];
+      const placeholder = document.createElement('div');
+      placeholder.className = 'service-item__img-placeholder service-item__img-placeholder' + variant;
+      imgDiv.appendChild(placeholder);
+      if (dienst.beeld_bestand) {
+        laadMedia(imgDiv, dienst.beeld_modus || 'afbeelding', dienst.beeld_bestand);
+      }
+
+      div.appendChild(textDiv);
+      div.appendChild(imgDiv);
+      container.appendChild(div);
+    });
+  }
+
+  // ── Hero content rendering ────────────────────────────────────────────────────
+
+  /**
+   * Bouwt de hero-video tekstlaag op basis van CMS-data.
+   * Ondersteunt: zichtbaarheid, uitlijning, meerdere tekstblokken (h1/h2/h3/p) en knoppen.
+   */
+  function renderHeroContent(store) {
+    const contentEl = document.getElementById('hero-content');
+    if (!contentEl) return;
+
+    const home = store.home || {};
+
+    // Verberg volledige tekstlaag indien uitgeschakeld
+    if (home.hero_content_zichtbaar === false) {
+      contentEl.style.display = 'none';
+      return;
+    }
+
+    // Uitlijning
+    const uitlijning = home.hero_uitlijning || 'midden';
+    contentEl.className = `hero-video__content hero-video__content--${uitlijning}`;
+
+    // Herbouw inhoud
+    contentEl.innerHTML = '';
+
+    const blokken = home.hero_blokken || [];
+    // Fallback naar oude hero_titel indien geen blokken gedefinieerd
+    if (!blokken.length && home.hero_titel) {
+      const h1 = document.createElement('h1');
+      h1.className = 'hero-video__title';
+      h1.textContent = home.hero_titel;
+      contentEl.appendChild(h1);
+    } else {
+      blokken.forEach(function (blok) {
+        if (blok.zichtbaar === false) return;
+        const tag = blok.tag || 'h1';
+        const el = document.createElement(tag);
+        if (tag === 'h1') el.className = 'hero-video__title';
+        el.textContent = blok.tekst || '';
+        contentEl.appendChild(el);
+      });
+    }
+
+    // Knoppen
+    const knoppen = (home.hero_knoppen || []).filter(function (k) {
+      return k.zichtbaar !== false && k.tekst;
+    });
+    if (knoppen.length) {
+      const btnsEl = document.createElement('div');
+      btnsEl.className = 'hero-video__btns';
+      knoppen.forEach(function (knop) {
+        const a = document.createElement('a');
+        a.href = knop.link || '#';
+        a.className = `hero-video__btn hero-video__btn--${knop.stijl || 'primair'}`;
+        a.textContent = knop.tekst;
+        btnsEl.appendChild(a);
+      });
+      contentEl.appendChild(btnsEl);
+    }
+  }
+
+  // ── Filter bar rendering (cases pagina) ──────────────────────────────────────
+
+  function renderFilterBar(store) {
+    const bar = document.getElementById('cases-filter');
+    if (!bar) return;
+    const labels = store.globaal && store.globaal.case_labels;
+    if (!labels || !labels.length) return;
+
+    // Bewaar de "Alle" knop, vervang de rest
+    const alleBtn = bar.querySelector('[data-filter="all"]');
+    bar.innerHTML = '';
+
+    if (alleBtn) {
+      bar.appendChild(alleBtn);
+    } else {
+      const alle = document.createElement('button');
+      alle.className = 'filter-btn active';
+      alle.setAttribute('data-filter', 'all');
+      alle.textContent = 'Alle';
+      bar.appendChild(alle);
+    }
+
+    labels.forEach(function (label) {
+      // Decap list+field slaat op als string of { label: '...' }
+      const text = (typeof label === 'object' && label.label) ? label.label : String(label);
+      const btn = document.createElement('button');
+      btn.className = 'filter-btn';
+      btn.setAttribute('data-filter', text);
+      btn.textContent = text;
+      bar.appendChild(btn);
+    });
+  }
+
   // ── Boot ──────────────────────────────────────────────────────────────────────
 
   async function boot() {
@@ -430,6 +619,10 @@
 
     populateText(store);
     populateMedia(store);
+    renderHeroContent(store);
+    renderDisciplines(store);
+    renderServices(store);
+    renderFilterBar(store);
 
     // Page-specific rendering
     const body = document.body;
@@ -438,10 +631,24 @@
     if (body.classList.contains('page-case-detail')) await renderCaseDetail();
   }
 
+  // Meer-knop bij statische HTML synchroon bijwerken (voor als CMS niet laadt)
+  function syncMoreButton() {
+    const moreWrap  = document.getElementById('cases-more');
+    const moreCount = document.querySelector('.cases-more-count');
+    if (!moreWrap) return;
+    const hidden = document.querySelectorAll('#cases-grid [data-more="true"]').length;
+    if (hidden === 0) {
+      moreWrap.classList.add('hidden');
+    } else {
+      if (moreCount) moreCount.textContent = '(+' + hidden + ')';
+    }
+  }
+
   // Run after DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
+    document.addEventListener('DOMContentLoaded', () => { syncMoreButton(); boot(); });
   } else {
+    syncMoreButton();
     boot();
   }
 
